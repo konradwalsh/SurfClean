@@ -1,6 +1,6 @@
 # SurfClean
 
-A privacy-focused Windows desktop application that washes away tracking as you browse the web, built with C#/.NET 8 and WPF.
+A privacy-focused Windows desktop application that washes away tracking as you browse the web, built with .NET 8 and WPF.
 
 ![SurfClean Screenshot](screenshot.png)
 
