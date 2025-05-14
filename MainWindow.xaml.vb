@@ -2,6 +2,8 @@
 Imports System.Windows.Controls
 Imports Surf_Clean.ViewModels
 Imports Surf_Clean.Models
+Imports System.ComponentModel
+Imports System.Runtime.CompilerServices
 
 Namespace Surf_Clean
     ''' <summary>
@@ -10,6 +12,9 @@ Namespace Surf_Clean
     Partial Public Class MainWindow
         Inherits Window
         
+        ''' <summary>
+        ''' Initializes a new instance of the MainWindow class
+        ''' </summary>
         Public Sub New()
 ' This call is required by the designer.
             InitializeComponent()
@@ -22,6 +27,9 @@ Namespace Surf_Clean
             SetActiveButton(BrowserButton)
         End Sub
         
+        ''' <summary>
+        ''' Handles navigation button clicks to switch between application pages
+        ''' </summary>
         Private Sub NavigationButton_Click(sender As Object, e As RoutedEventArgs)
             Dim clickedButton As Button = TryCast(sender, Button)
             
@@ -40,6 +48,9 @@ Namespace Surf_Clean
             End If
         End Sub
         
+        ''' <summary>
+        ''' Shows the specified page and hides all others
+        ''' </summary>
         Private Sub ShowPage(pageToShow As UIElement)
             ' Hide all pages
             DashboardPage.Visibility = Visibility.Collapsed
@@ -51,6 +62,9 @@ Namespace Surf_Clean
             pageToShow.Visibility = Visibility.Visible
         End Sub
         
+        ''' <summary>
+        ''' Sets the active navigation button style
+        ''' </summary>
         Private Sub SetActiveButton(activeButton As Button)
             ' Reset all buttons to default style
             DashboardButton.Style = TryCast(FindResource("NavButtonStyle"), Style)
