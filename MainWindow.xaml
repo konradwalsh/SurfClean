@@ -6,8 +6,39 @@
         xmlns:local="clr-namespace:Surf_Clean"
         xmlns:views1="clr-namespace:Surf_Clean.Surf_Clean.Views"
         mc:Ignorable="d"
-        Title="SurfClean" Height="700" Width="1000"
-        Background="#EEF8FC">
+        Title="SurfClean - Secure Browsing" Height="700" Width="1000"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Window.Icon>
+        <DrawingImage>
+            <DrawingImage.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <!-- Background circle -->
+                        <GeometryDrawing Brush="#1E88E5">
+                            <GeometryDrawing.Geometry>
+                                <EllipseGeometry Center="50,50" RadiusX="45" RadiusY="45"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        
+                        <!-- Wave design -->
+                        <GeometryDrawing Brush="#BBDEFB">
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry Figures="M 20,50 C 30,40 40,60 50,50 C 60,40 70,60 80,50 L 80,80 C 70,80 30,80 20,80 Z"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        
+                        <!-- Surfer -->
+                        <GeometryDrawing Brush="#FFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry Figures="M 55,30 C 58,25 60,28 58,30 L 52,40 C 51,42 54,44 56,42 L 64,38 C 66,37 67,39 66,41 L 58,45 C 54,47 50,45 48,42 L 45,37 C 42,32 45,28 48,30 Z"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Icon>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,24 +47,78 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header 1 -->
-        <Border Grid.Row="0" Background="#FF0A3035" Padding="20,10">
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource PrimaryBrush}" Padding="0,0,0,0" Height="64" Effect="{StaticResource StandardShadow}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock Text="🏄‍♂️ SurfClean" FontSize="22" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"/>
+                <!-- Logo and Title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="24,0,0,0">
+                    <Border Background="{StaticResource PrimaryLightBrush}" 
+                            CornerRadius="12" 
+                            Width="42" 
+                            Height="42" 
+                            Margin="0,0,10,0">
+                        <Image Width="32" 
+                               Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <!-- Background circle -->
+                                                <GeometryDrawing Brush="#1E88E5">
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="50,50" RadiusX="45" RadiusY="45"/>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                                
+                                                <!-- Wave design -->
+                                                <GeometryDrawing Brush="#BBDEFB">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 20,50 C 30,40 40,60 50,50 C 60,40 70,60 80,50 L 80,80 C 70,80 30,80 20,80 Z"/>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                                
+                                                <!-- Surfer -->
+                                                <GeometryDrawing Brush="#FFFFFF">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 55,30 C 58,25 60,28 58,30 L 52,40 C 51,42 54,44 56,42 L 64,38 C 66,37 67,39 66,41 L 58,45 C 54,47 50,45 48,42 L 45,37 C 42,32 45,28 48,30 Z"/>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="SurfClean" 
+                                  FontSize="22" 
+                                  FontWeight="Bold" 
+                                  Foreground="White"/>
+                        <TextBlock Text="The Secure Browser" 
+                                  FontSize="12" 
+                                  Foreground="{StaticResource PrimaryLightBrush}" 
+                                  Margin="2,0,0,0"/>
+                    </StackPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="553,0,0,0" Width="270" Grid.ColumnSpan="2" Grid.Column="1">
-                    <Button x:Name="DashboardButton" Content="SurfBoard" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
-                    <Button x:Name="ScannerButton" Content="WaveWash" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
-                    <Button x:Name="BrowserButton" Content="Surf" Style="{StaticResource ActiveNavButtonStyle}" Click="NavigationButton_Click"/>
-                    <Button x:Name="SettingsButton" Content="Gear" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
+                <!-- Right-justified Navigation -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,32,0">
+                    <Button x:Name="DashboardButton" Tag="🏄‍♂️" Content="SurfBoard" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
+                    <Button x:Name="ScannerButton" Tag="🌊" Content="WaveWash" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
+                    <Button x:Name="BrowserButton" Tag="🌐" Content="Surf" Style="{StaticResource ActiveNavButtonStyle}" Click="NavigationButton_Click"/>
+                    <Button x:Name="SettingsButton" Tag="⚙️" Content="Gear" Style="{StaticResource NavButtonStyle}" Click="NavigationButton_Click"/>
                 </StackPanel>
+
+                <!-- Center column left empty for spacing -->
+                <TextBlock Grid.Column="1" />
             </Grid>
         </Border>
 
@@ -48,7 +133,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="SurfBoard" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="#006064"/>
+                    <TextBlock Grid.Row="0" Text="SurfBoard" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" Foreground="{StaticResource TextPrimaryBrush}"/>
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -58,35 +143,35 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Privacy Score -->
-                        <Border Grid.Column="0" Background="White" CornerRadius="8" Margin="5" Padding="15" Effect="{StaticResource StandardShadow}">
+                        <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" CornerRadius="12" Margin="5" Padding="20" Effect="{StaticResource StandardShadow}">
                             <StackPanel>
-                                <TextBlock Text="Wave Score" FontWeight="Bold" FontSize="16" Foreground="#006064"/>
-                                <TextBlock Text="92/100" FontSize="36" FontWeight="Bold" Foreground="#FF01181B" Margin="0,10"/>
-                                <TextBlock Text="Your surfing is clean and protected" TextWrapping="Wrap" Margin="0,5" Foreground="#757575"/>
+                                <TextBlock Text="Wave Score" FontWeight="Bold" FontSize="16" Foreground="{StaticResource PrimaryBrush}"/>
+                                <TextBlock Text="92/100" FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="0,10"/>
+                                <TextBlock Text="Your surfing is clean and protected" TextWrapping="Wrap" Margin="0,5" Foreground="{StaticResource TextSecondaryBrush}"/>
                             </StackPanel>
                         </Border>
 
                         <!-- Trackers Blocked -->
-                        <Border Grid.Column="1" Background="White" CornerRadius="8" Margin="5" Padding="15" Effect="{StaticResource StandardShadow}">
+                        <Border Grid.Column="1" Background="{StaticResource SurfaceBrush}" CornerRadius="12" Margin="5" Padding="20" Effect="{StaticResource StandardShadow}">
                             <StackPanel>
-                                <TextBlock Text="Wipeouts Prevented" FontWeight="Bold" FontSize="16" Foreground="#006064"/>
-                                <TextBlock Text="246" FontSize="36" FontWeight="Bold" Foreground="#00BCD4" Margin="0,10"/>
-                                <TextBlock Text="Since you installed SurfClean" TextWrapping="Wrap" Margin="0,5" Foreground="#757575"/>
+                                <TextBlock Text="Wipeouts Prevented" FontWeight="Bold" FontSize="16" Foreground="{StaticResource PrimaryBrush}"/>
+                                <TextBlock Text="246" FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="0,10"/>
+                                <TextBlock Text="Since you installed SurfClean" TextWrapping="Wrap" Margin="0,5" Foreground="{StaticResource TextSecondaryBrush}"/>
                             </StackPanel>
                         </Border>
 
                         <!-- Privacy Status -->
-                        <Border Grid.Column="2" Background="White" CornerRadius="8" Margin="5" Padding="15" Effect="{StaticResource StandardShadow}">
+                        <Border Grid.Column="2" Background="{StaticResource SurfaceBrush}" CornerRadius="12" Margin="5" Padding="20" Effect="{StaticResource StandardShadow}">
                             <StackPanel>
-                                <TextBlock Text="Surf Conditions" FontWeight="Bold" FontSize="16" Foreground="#006064"/>
-                                <TextBlock Text="Excellent" FontSize="36" FontWeight="Bold" Foreground="#00BCD4" Margin="0,10"/>
-                                <TextBlock Text="All cleaning features are active" TextWrapping="Wrap" Margin="0,5" Foreground="#757575"/>
+                                <TextBlock Text="Surf Conditions" FontWeight="Bold" FontSize="16" Foreground="{StaticResource PrimaryBrush}"/>
+                                <TextBlock Text="Excellent" FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="0,10"/>
+                                <TextBlock Text="All cleaning features are active" TextWrapping="Wrap" Margin="0,5" Foreground="{StaticResource TextSecondaryBrush}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
 
-                    <Border Grid.Row="2" Background="White" CornerRadius="8" Margin="0,20,0,0" Padding="20" Effect="{StaticResource StandardShadow}">
-                        <TextBlock Text="This is your SurfBoard - the dashboard for SurfClean. In a full implementation, this would show detailed cleaning statistics and surf conditions for your web experience." TextWrapping="Wrap" Foreground="#757575"/>
+                    <Border Grid.Row="2" Background="{StaticResource SurfaceBrush}" CornerRadius="12" Margin="0,20,0,0" Padding="20" Effect="{StaticResource StandardShadow}">
+                        <TextBlock Text="This is your SurfBoard - the dashboard for SurfClean. In a full implementation, this would show detailed cleaning statistics and surf conditions for your web experience." TextWrapping="Wrap" Foreground="{StaticResource TextSecondaryBrush}"/>
                     </Border>
                 </Grid>
             </Grid>
@@ -102,33 +187,33 @@
                     </Grid.RowDefinitions>
 
                     <!-- Scanner Title -->
-                    <TextBlock Grid.Row="0" Text="WaveWash Scanner" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="#006064"/>
+                    <TextBlock Grid.Row="0" Text="WaveWash Scanner" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" Foreground="{StaticResource TextPrimaryBrush}"/>
 
                     <!-- Scanner Controls -->
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
                         <TextBlock Text="Scan your system for tracking elements and wash them away for a cleaner browsing experience" 
-                                TextWrapping="Wrap" Margin="0,0,0,10" Foreground="#757575"/>
+                                TextWrapping="Wrap" Margin="0,0,0,10" Foreground="{StaticResource TextSecondaryBrush}"/>
 
                         <StackPanel Orientation="Horizontal" Margin="0,10">
                             <Button Content="Start Washing" Command="{Binding StartScanCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
                             <Button Content="Stop Washing" Command="{Binding StopScanCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
-                            <Button Content="Clear Results" Command="{Binding ClearResultsCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                            <Button Content="Clear Results" Command="{Binding ClearResultsCommand}" Style="{StaticResource AccentButtonStyle}"/>
                         </StackPanel>
                     </StackPanel>
 
                     <!-- Status Bar -->
-                    <Border Grid.Row="2" Background="#E0F7FA" Padding="10" CornerRadius="4" Margin="0,0,0,10" VerticalAlignment="Top" Effect="{StaticResource StandardShadow}">
+                    <Border Grid.Row="2" Background="{StaticResource PrimaryLightBrush}" Padding="15" CornerRadius="8" Margin="0,0,0,10" VerticalAlignment="Top" Effect="{StaticResource StandardShadow}">
                         <StackPanel>
-                            <TextBlock Text="{Binding StatusMessage}" FontWeight="SemiBold" Foreground="#006064"/>
+                            <TextBlock Text="{Binding StatusMessage}" FontWeight="SemiBold" Foreground="{StaticResource PrimaryDarkBrush}"/>
                             <ProgressBar Height="5" IsIndeterminate="{Binding IsScanActive}" 
                                         Margin="0,5,0,0" Background="Transparent"
-                                        Foreground="#00BCD4" BorderThickness="0"/>
+                                        Foreground="{StaticResource PrimaryBrush}" BorderThickness="0"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Results List -->
-                    <ListView Grid.Row="2" ItemsSource="{Binding DetectedTrackers}" BorderThickness="1" 
-                              BorderBrush="#E0E0E0" Margin="0,60,0,0" Background="White"
+                    <ListView Grid.Row="2" ItemsSource="{Binding DetectedTrackers}" BorderThickness="0" 
+                              Margin="0,60,0,0" Background="{StaticResource SurfaceBrush}"
                               Effect="{StaticResource StandardShadow}">
                         <ListView.View>
                             <GridView>
@@ -168,7 +253,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 <Button Content="Delete" Padding="8,2" Margin="0,0,5,0" Background="#FF5722" Foreground="White" BorderThickness="0"/>
-                                                <Button Content="Block" Padding="8,2" Background="#00BCD4" Foreground="White" BorderThickness="0"/>
+                                                <Button Content="Block" Padding="8,2" Background="{StaticResource AccentBrush}" Foreground="White" BorderThickness="0"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -178,11 +263,11 @@
                     </ListView>
 
                     <!-- Summary -->
-                    <Border Grid.Row="3" Background="#E0F7FA" Padding="10" Margin="0,10,0,0" CornerRadius="4">
+                    <Border Grid.Row="3" Background="{StaticResource PrimaryLightBrush}" Padding="15" Margin="0,10,0,0" CornerRadius="8">
                         <StackPanel>
-                            <TextBlock Foreground="#006064">
+                            <TextBlock Foreground="{StaticResource PrimaryDarkBrush}">
                                 <Run Text="Total tracking elements found: "/>
-                                <Run Text="{Binding TrackerCount}" FontWeight="Bold" Foreground="#00838F"/>
+                                <Run Text="{Binding TrackerCount}" FontWeight="Bold" Foreground="{StaticResource PrimaryDarkBrush}"/>
                             </TextBlock>
                         </StackPanel>
                     </Border>
@@ -202,30 +287,30 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Surf Gear" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="#006064"/>
+                    <TextBlock Grid.Row="0" Text="Surf Gear" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" Foreground="{StaticResource TextPrimaryBrush}"/>
 
-                    <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="20" Effect="{StaticResource StandardShadow}">
+                    <Border Grid.Row="1" Background="{StaticResource SurfaceBrush}" CornerRadius="12" Padding="25" Effect="{StaticResource StandardShadow}">
                         <StackPanel>
-                            <TextBlock Text="Surf Protection Settings" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" Foreground="#006064"/>
+                            <TextBlock Text="Surf Protection Settings" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Foreground="{StaticResource PrimaryBrush}"/>
 
-                            <CheckBox Content="WaveWash - Block tracking requests" IsChecked="True" Margin="0,5" Foreground="#212121"/>
+                            <CheckBox Content="WaveWash - Block tracking requests" IsChecked="True" Margin="0,8" Foreground="{StaticResource TextPrimaryBrush}"/>
                             <TextBlock Text="Prevents websites from tracking your activities" 
-                                     Margin="25,0,0,10" Foreground="#757575"/>
+                                     Margin="25,0,0,15" Foreground="{StaticResource TextSecondaryBrush}"/>
 
-                            <CheckBox Content="SandScrubber - Clean cookies" IsChecked="True" Margin="0,5" Foreground="#212121"/>
+                            <CheckBox Content="SandScrubber - Clean cookies" IsChecked="True" Margin="0,8" Foreground="{StaticResource TextPrimaryBrush}"/>
                             <TextBlock Text="Remove cookies that track you between websites" 
-                                     Margin="25,0,0,10" Foreground="#757575"/>
+                                     Margin="25,0,0,15" Foreground="{StaticResource TextSecondaryBrush}"/>
 
-                            <CheckBox Content="CoralGuard - Prevent fingerprinting" IsChecked="True" Margin="0,5" Foreground="#212121"/>
+                            <CheckBox Content="CoralGuard - Prevent fingerprinting" IsChecked="True" Margin="0,8" Foreground="{StaticResource TextPrimaryBrush}"/>
                             <TextBlock Text="Stop websites from identifying your browser's unique characteristics" 
-                                     Margin="25,0,0,10" Foreground="#757575"/>
+                                     Margin="25,0,0,15" Foreground="{StaticResource TextSecondaryBrush}"/>
 
-                            <CheckBox Content="TideSignal - Send 'Do Not Track'" IsChecked="True" Margin="0,5" Foreground="#212121"/>
+                            <CheckBox Content="TideSignal - Send 'Do Not Track'" IsChecked="True" Margin="0,8" Foreground="{StaticResource TextPrimaryBrush}"/>
                             <TextBlock Text="Signal to websites that you prefer not to be tracked" 
-                                     Margin="25,0,0,10" Foreground="#757575"/>
+                                     Margin="25,0,0,15" Foreground="{StaticResource TextSecondaryBrush}"/>
 
-                            <TextBlock Text="About SurfClean" FontWeight="Bold" FontSize="18" Margin="0,20,0,10" Foreground="#006064"/>
-                            <TextBlock TextWrapping="Wrap" Foreground="#757575">
+                            <TextBlock Text="About SurfClean" FontWeight="Bold" FontSize="18" Margin="0,25,0,15" Foreground="{StaticResource PrimaryBrush}"/>
+                            <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextSecondaryBrush}">
                                 SurfClean version 1.0.0<LineBreak/>
                                 Clean browsing, clear conscience<LineBreak/>
                                 Created by Konrad Walsh
@@ -237,9 +322,9 @@
         </Grid>
 
         <!-- Footer -->
-        <Border Grid.Row="2" Background="#E0F7FA" Padding="20,10">
+        <Border Grid.Row="2" Background="{StaticResource PrimaryLightBrush}" Padding="20,12">
             <TextBlock Text="SurfClean - Where the web washes clean" 
-                     HorizontalAlignment="Center" Foreground="#006064"/>
+                     HorizontalAlignment="Center" Foreground="{StaticResource PrimaryDarkBrush}"/>
         </Border>
     </Grid>
 

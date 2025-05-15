@@ -16,118 +16,141 @@
         </Grid.RowDefinitions>
 
         <!-- Navigation Bar -->
-        <Grid Grid.Row="0" Background="White" Margin="0,0,0,1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Background="{StaticResource SurfaceBrush}" 
+                CornerRadius="8,8,0,0" Margin="10,5,10,0"
+                Effect="{StaticResource StandardShadow}">
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Navigation Controls -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="5">
-                <Button Command="{Binding GoBackCommand}" ToolTip="Go Back" Width="32" Height="32" Margin="2,0" Background="#E0F7FA" Foreground="#006064" BorderThickness="0">
-                    <TextBlock Text="←" FontSize="14"/>
-                </Button>
-                <Button Command="{Binding GoForwardCommand}" ToolTip="Go Forward" Width="32" Height="32" Margin="2,0" Background="#E0F7FA" Foreground="#006064" BorderThickness="0">
-                    <TextBlock Text="→" FontSize="14"/>
-                </Button>
-                <Button Command="{Binding RefreshCommand}" ToolTip="Refresh" Width="32" Height="32" Margin="2,0" Background="#E0F7FA" Foreground="#006064" BorderThickness="0">
-                    <TextBlock Text="↻" FontSize="14"/>
-                </Button>
-                <Button Command="{Binding HomeCommand}" ToolTip="Home" Width="32" Height="32" Margin="2,0" Background="#E0F7FA" Foreground="#006064" BorderThickness="0">
-                    <TextBlock Text="🏠" FontSize="14"/>
-                </Button>
-            </StackPanel>
+                <!-- Navigation Controls -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="5">
+                    <Button Command="{Binding GoBackCommand}" ToolTip="Go Back" Style="{StaticResource IconButtonStyle}">
+                        <TextBlock Text="←" FontSize="16" FontWeight="SemiBold"/>
+                    </Button>
+                    <Button Command="{Binding GoForwardCommand}" ToolTip="Go Forward" Style="{StaticResource IconButtonStyle}">
+                        <TextBlock Text="→" FontSize="16" FontWeight="SemiBold"/>
+                    </Button>
+                    <Button Command="{Binding RefreshCommand}" ToolTip="Refresh" Style="{StaticResource IconButtonStyle}">
+                        <TextBlock Text="↻" FontSize="16" FontWeight="SemiBold"/>
+                    </Button>
+                    <Button Command="{Binding HomeCommand}" ToolTip="Home" Style="{StaticResource IconButtonStyle}">
+                        <TextBlock Text="🏠" FontSize="14"/>
+                    </Button>
+                </StackPanel>
 
-            <!-- Address Bar -->
-            <Border Grid.Column="1" 
-                    Background="#F5F5F5" 
-                    CornerRadius="18" 
-                    Padding="5"
-                    Margin="5,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Secure indicator -->
-                    <TextBlock Grid.Column="0" 
-                              Text="🌊" 
-                              VerticalAlignment="Center" 
-                              Margin="5,0"
-                              Foreground="#00BCD4"/>
-
-                    <!-- URL TextBox -->
-                    <TextBox Grid.Column="1" 
-                             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
-                             BorderThickness="0" 
-                             Background="Transparent"
-                             Padding="5,0"
-                             KeyDown="UrlTextBox_KeyDown"
-                             VerticalContentAlignment="Center"
-                             Foreground="#212121"/>
-
-                    <!-- Search Button -->
-                    <Button Grid.Column="2" 
-                            Command="{Binding NavigateCommand}" 
-                            Content="Surf" 
-                            Width="40" 
-                            Margin="5,0"
-                            Background="#00BCD4"
-                            Foreground="White"
-                            BorderThickness="0"/>
-                </Grid>
-            </Border>
-
-            <!-- Privacy Controls -->
-            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="5">
-                <!-- Privacy Shield Button -->
-                <Button Width="32" Height="32" Margin="2,0" ToolTip="Surf Clean Protection Status" Background="#00BCD4" BorderThickness="0">
+                <!-- Address Bar -->
+                <Border Grid.Column="1" 
+                        Background="{StaticResource BackgroundBrush}" 
+                        CornerRadius="24" 
+                        Padding="5"
+                        Margin="5,0">
                     <Grid>
-                        <TextBlock Text="🌊" FontSize="16"/>
-                        <TextBlock Text="{Binding TrackersBlocked}" FontSize="10" 
-                                  FontWeight="Bold" HorizontalAlignment="Center" 
-                                  VerticalAlignment="Center" Foreground="White" Margin="0,2,0,0"/>
-                    </Grid>
-                </Button>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                <!-- Settings Button -->
-                <Button Width="32" Height="32" Margin="2,0" Background="#E0F7FA" BorderThickness="0">
-                    <TextBlock Text="⚙️" FontSize="16"/>
-                </Button>
-            </StackPanel>
-        </Grid>
+                        <!-- Secure indicator -->
+                        <Border Grid.Column="0" 
+                                Background="{StaticResource PrimaryLightBrush}" 
+                                CornerRadius="18" 
+                                Width="36" 
+                                Height="36" 
+                                Margin="3,0">
+                            <TextBlock Text="🌊" 
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center" 
+                                      Foreground="{StaticResource PrimaryBrush}"/>
+                        </Border>
+
+                        <!-- URL TextBox -->
+                        <TextBox Grid.Column="1" 
+                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
+                                 Style="{StaticResource ModernTextBoxStyle}"
+                                 BorderThickness="0" 
+                                 Background="Transparent"
+                                 Padding="10,0"
+                                 KeyDown="UrlTextBox_KeyDown"
+                                 VerticalContentAlignment="Center"
+                                 Foreground="{StaticResource TextPrimaryBrush}"/>
+
+                        <!-- Search Button -->
+                        <Button Grid.Column="2" 
+                                Command="{Binding NavigateCommand}" 
+                                Content="Surf" 
+                                Width="60" 
+                                Height="36"
+                                Style="{StaticResource RoundedButtonStyle}"
+                                Background="{StaticResource PrimaryBrush}"
+                                Foreground="White"/>
+                    </Grid>
+                </Border>
+
+                <!-- Privacy Controls -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="5">
+                    <!-- Privacy Shield Button -->
+                    <Border Width="36" Height="36" CornerRadius="18" Margin="3,0" Background="{StaticResource AccentBrush}" ToolTip="Surf Clean Protection Status">
+                        <Grid>
+                            <TextBlock Text="🌊" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding TrackersBlocked}" FontSize="10" 
+                                      FontWeight="Bold" HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center" Foreground="White" Margin="0,2,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Settings Button -->
+                    <Button Style="{StaticResource IconButtonStyle}" ToolTip="Browser Settings">
+                        <TextBlock Text="⚙️" FontSize="16"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <!-- WebView2 Browser Control -->
-        <wv2:WebView2 Grid.Row="1" x:Name="webView" Source="https://duckduckgo.com" AllowExternalDrop="False"/>
+        <Border Grid.Row="1" Background="{StaticResource SurfaceBrush}" Margin="10,0,10,0">
+            <wv2:WebView2 x:Name="webView" Source="https://duckduckgo.com" AllowExternalDrop="False"/>
+        </Border>
 
         <!-- Status Bar -->
-        <Grid Grid.Row="2" Background="#E0F7FA">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="2" Background="{StaticResource SurfaceBrush}" 
+                CornerRadius="0,0,8,8" Margin="10,0,10,5" 
+                Effect="{StaticResource StandardShadow}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Privacy Status -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,5">
-                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
-                    <CheckBox IsChecked="{Binding TrackingProtectionEnabled}" Content="WaveWash" VerticalAlignment="Center" Foreground="#006064"/>
+                <!-- Privacy Status -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="15,8">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
+                        <CheckBox IsChecked="{Binding TrackingProtectionEnabled}" Content="WaveWash" VerticalAlignment="Center" Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
+                        <CheckBox IsChecked="{Binding CookieBlockingEnabled}" Content="SandScrubber" VerticalAlignment="Center" Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding FingerprintProtectionEnabled}" Content="CoralGuard" VerticalAlignment="Center" Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
-                    <CheckBox IsChecked="{Binding CookieBlockingEnabled}" Content="SandScrubber" VerticalAlignment="Center" Foreground="#006064"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding FingerprintProtectionEnabled}" Content="CoralGuard" VerticalAlignment="Center" Foreground="#006064"/>
-                </StackPanel>
-            </StackPanel>
 
-            <!-- Tracker Counter -->
-            <TextBlock Grid.Column="1" Margin="10,5" VerticalAlignment="Center" Foreground="#006064">
-                <Run Text="Trackers Washed Away: "/>
-                <Run Text="{Binding TrackersBlocked}" FontWeight="Bold"/>
-            </TextBlock>
-        </Grid>
+                <!-- Tracker Counter -->
+                <Border Grid.Column="1" Background="{StaticResource PrimaryLightBrush}" 
+                        CornerRadius="20" Padding="12,5" Margin="0,0,15,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🌊" Margin="0,0,5,0"/>
+                        <TextBlock Foreground="{StaticResource PrimaryDarkBrush}">
+                            <Run Text="Trackers Washed Away: "/>
+                            <Run Text="{Binding TrackersBlocked}" FontWeight="Bold"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

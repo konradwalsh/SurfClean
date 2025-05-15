@@ -34,5 +34,8 @@
     <Page Include="Views\WebBrowserView.xaml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
+    <Page Include="Resources\SurfCleanIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
